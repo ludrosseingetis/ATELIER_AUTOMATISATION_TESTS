@@ -1,0 +1,15 @@
+name: Scheduled API Test
+
+on:
+  schedule:
+    # S'exécute toutes les heures (Format Cron)
+    - cron: '*/5 * * * *'
+  workflow_dispatch: # Permet aussi de le lancer manuellement depuis GitHub
+
+jobs:
+  trigger_run:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Call the /run endpoint
+        run: |
+          curl -L https://ludrosse.pythonanywhere.com/run
