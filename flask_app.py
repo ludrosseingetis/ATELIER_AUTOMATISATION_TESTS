@@ -9,8 +9,7 @@ storage.init_db()
 
 @app.route("/")
 def index():
-    # On redirige vers le dashboard par défaut
-    return redirect(url_for('consignes.html'))
+    return render_template('consignes.html')
 
 @app.route("/dashboard")
 def dashboard():
