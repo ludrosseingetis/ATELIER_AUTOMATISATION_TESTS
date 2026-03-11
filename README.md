@@ -9,7 +9,7 @@ Et un service doit être fiable, mesurable et surveillé
   
 Votre mission :  
   
-👉 Choisir une API publique.  
+👉 Choisir une API publique
 👉 Concevoir et implémenter une solution d’automatisation des tests 
 👉 Déployer votre solution sur PythonAnywhere.  
 👉 Mesurer et exposer des indicateurs de qualité de service.    
