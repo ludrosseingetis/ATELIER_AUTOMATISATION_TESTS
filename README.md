@@ -11,7 +11,7 @@ Votre mission :
 
 👉 Choisir une API publiqu
 👉 Concevoir et implémenter une solution d’automatisation des tests 
-👉 Déployer votre solution sur PythonAnywhere.  
+👉 Déployer votre solution sur PythonAnywhere.
 👉 Mesurer et exposer des indicateurs de qualité de service.    
   
 -------------------------------------------------------------------------------------------------------
