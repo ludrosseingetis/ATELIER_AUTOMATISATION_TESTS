@@ -18,12 +18,24 @@
         <tbody>
             {% for run in runs %}
             <tr>
-                <td>{{ run.timestamp }}</td>
-                <td>{{ run.success_rate }}%</td>
-                <td>{{ run.avg_latency | round(2) }}</td>
-            </tr>
-            {% endfor %}
-        </tbody>
-    </table>
+                <table class="table">
+    <thead>
+        <tr>
+            <th>Date</th>
+            <th>Succès</th>
+            <th>Latence</th>
+            <th>Résultat API (Contrat)</th> </tr>
+    </thead>
+    <tbody>
+        {% for run in runs %}
+        <tr>
+            <td>{{ run.timestamp }}</td>
+            <td>{{ run.success_rate }}%</td>
+            <td>{{ run.avg_latency }} ms</td>
+            <td>{{ run.details }}</td> </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
 </body>
 </html>
