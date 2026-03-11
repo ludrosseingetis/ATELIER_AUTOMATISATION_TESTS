@@ -7,6 +7,10 @@ def run_tests():
     url = "https://api.frankfurter.app/latest?from=EUR&to=USD"
     latencies = []
     passed = 0
+    response = requests.get(url)
+    data = response.json()
+        taux_usd = data['rates']['USD']
+        storage.save_run(100, 150, f"1 EUR = {taux_usd} USD")
     
     for i in range(5): # On fait 5 tests pour la QoS
         try:
