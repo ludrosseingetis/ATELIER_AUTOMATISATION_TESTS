@@ -8,7 +8,7 @@ Mais une API, ce n’est pas juste une URL qui répond. C’est un servic
 Et un service doit être fiable, mesurable et surveillé
   
 Votre mission :  
-  
+
 👉 Choisir une API publiqu
 👉 Concevoir et implémenter une solution d’automatisation des tests 
 👉 Déployer votre solution sur PythonAnywhere.  
