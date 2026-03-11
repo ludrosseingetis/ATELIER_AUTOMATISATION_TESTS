@@ -1,10 +1,10 @@
 # API Choice
 
-- Étudiant :
-- API choisie :
-- URL base :
-- Documentation officielle / README :
-- Auth : None / API Key / OAuth
+- Étudiant : Flavien Petton
+- API choisie : Frankfurter
+- URL base : https://api.frankfurter.app/latest?from=EUR
+- Documentation officielle / README : https://frankfurter.dev/
+- Auth : None
 - Endpoints testés :
   - GET ...
   - GET ...
