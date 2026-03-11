@@ -1,30 +1,39 @@
-from flask import Flask, render_template, redirect, url_for
-import storage
-import os
+from flask import Flask, render_template_string, render_template, jsonify, request, redirect, url_for, session
+
+from flask import render_template
+
+from flask import json
+
+from urllib.request import urlopen
+
+from werkzeug.utils import secure_filename
+
+import sqlite3
+
+
 
 app = Flask(__name__)
 
-# Assure-toi que la BDD est initialisée au démarrage
-with app.app_context():
-    storage.init_db()
 
-@app.route("/")
-def index():
-    # On redirige l'accueil vers le dashboard pour plus de clarté
-    return redirect(url_for('dashboard'))
 
-@app.route("/dashboard")
-def dashboard():
-    # On récupère les 10 derniers runs depuis SQLite
-    runs = storage.get_runs()
-    return render_template('dashboard.html', runs=runs)
+@app.get("/")
 
-@app.route("/run")
-def trigger_test():
-    # Cette route permet de lancer le test via un bouton sur le dashboard
-    from tester import runner
-    runner.run_tests()
-    return redirect(url_for('dashboard'))
+def consignes():
+
+     return render_template('consignes.html')
+
+
+
+@app.get("/tester")
+
+def consignes():
+
+     return render_template('consignes.html')
+
+
 
 if __name__ == "__main__":
-    app.run(debug=True)
+
+    # utile en local uniquement
+
+    app.run(host="0.0.0.0", port=5000, debug=True)
