@@ -1,28 +1,39 @@
-from flask import Flask, render_template_string, render_template, jsonify, request, redirect, url_for, session
-from flask import render_template
-from flask import json
-from urllib.request import urlopen
-from werkzeug.utils import secure_filename
-import sqlite3
+from flask import Flask, render_template, redirect, url_for
+import storage # <--- NE PAS OUBLIER CETTE LIGNE
+import os
 
 app = Flask(__name__)
 
-@app.get("/")
+# Initialisation de la BDD au lancement
+storage.init_db()
+
+@app.route("/")
+def index():
+    # On redirige vers le dashboard par défaut
+    return redirect(url_for('dashboard'))
+
+@app.route("/consignes")
 def consignes():
-     return render_template('consignes.html')
-     @app.route("/dashboard")
+    return render_template('consignes.html')
+
+@app.route("/dashboard")
 def dashboard():
     # On récupère les 10 derniers runs depuis SQLite
-    runs = storage.get_runs()
-    return render_template('dashboard.html', runs=runs)
+    try:
+        runs = storage.get_runs()
+        return render_template('dashboard.html', runs=runs)
+    except Exception as e:
+        return f"Erreur avec la base de données : {e}"
 
 @app.route("/run")
 def trigger_test():
-    # Cette route permet de lancer le test via un bouton sur le dashboard
-    from tester import runner
-    runner.run_tests()
-    return redirect(url_for('dashboard'))
+    # On importe le runner ici pour lancer le test
+    try:
+        from tester import runner
+        runner.run_tests()
+        return redirect(url_for('dashboard'))
+    except Exception as e:
+        return f"Erreur lors de l'exécution du test : {e}"
 
 if __name__ == "__main__":
-    # utile en local uniquement
     app.run(host="0.0.0.0", port=5000, debug=True)
