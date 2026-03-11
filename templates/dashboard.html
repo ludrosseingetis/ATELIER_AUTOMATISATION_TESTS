@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Dashboard API</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+</head>
+<body class="container mt-5">
+    <h1>Résultats des tests (Frankfurter API)</h1>
+    <a href="/run" class="btn btn-primary mb-3">Lancer un nouveau test</a>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Date</th>
+                <th>Succès (%)</th>
+                <th>Latence (ms)</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for run in runs %}
+            <tr>
+                <td>{{ run.timestamp }}</td>
+                <td>{{ run.success_rate }}%</td>
+                <td>{{ run.avg_latency | round(2) }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>
